@@ -5,6 +5,7 @@ const message = document.querySelector('.message');
 const heart = document.querySelector('.heart');
 const title = document.querySelector('.title');
 const heartImage = document.getElementById('heartImage');
+const loveAudio = document.getElementById('loveAudio');
 // khi nhấn đồng ý
 yesBtn.onclick = () => {
     title.style.display = 'none';
@@ -13,6 +14,12 @@ yesBtn.onclick = () => {
     yesBtn.style.display = 'none';
     noBtn.style.display = 'none';
     heartImage.classList.add('show');
+     // Play audio
+     loveAudio.loop= true; // Lặp lại âm thanh
+    loveAudio.play().catch(error => {
+        console.log("Audio playback failed:", error);
+    });
+
 
 };
 
