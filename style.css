@@ -104,3 +104,80 @@ button:hover {
         transform: scale(1);
     }
 }
+
+/* ...existing code... */
+
+/* Add Media Queries for Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 0 15px;
+    }
+
+    .buttons {
+        gap: 15px;
+        margin-bottom: 20px;
+        flex-direction: column;
+    }
+
+    button {
+        padding: 12px 25px;
+        font-size: 1rem;
+        min-width: 120px;
+    }
+
+    #loveText {
+        font-size: 1.2rem;
+        text-align: center;
+        padding: 0 15px;
+    }
+
+    #heartImage {
+        max-width: 80%;
+        margin-top: -300px;
+    }
+
+    .heart {
+        font-size: 3rem;
+    }
+
+    .container {
+        padding: 20px;
+        height: calc(100vh - 40px);
+        position: relative;
+    }
+}
+
+/* Add styles for very small screens */
+@media screen and (max-width: 320px) {
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    #heartImage {
+        margin-top: -200px;
+    }
+}
+
+/* Fix button positioning for touch devices */
+@media (hover: none) {
+    button#noBtn {
+        position: absolute;
+        touch-action: none;
+        position: relative;
+    }
+}
+
+/* Prevent text selection on buttons */
+button {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
