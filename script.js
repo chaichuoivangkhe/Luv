@@ -16,27 +16,33 @@ yesBtn.onclick = () => {
 
 };
 
-// khi nhấn không đồng ý
-noBtn.onmouseover = () => {
+// Xử lý cho cả hover chuột và chạm màn hình
+const moveNoButton = () => {
     const container = document.querySelector('.container');
     const containerRect = container.getBoundingClientRect();
-  // Đặt position absolute khi hover
+    // Lấy vị trí của nút "Không"
     noBtn.style.position = 'absolute';
-    noBtn.style.transition = 'left 0.5s, top 0.5s'; // thêm hiệu ứng chuyển động
-    // kích thước nút
+    noBtn.style.transition = 'left 0.5s, top 0.5s';
+    // Lấy kích thước của nút "Không" và vùng chứa
     const btnWidth = noBtn.offsetWidth;
     const btnHeight = noBtn.offsetHeight;
-    
-    // giới hạn vùng di chuyển ( tránh ra ngoài màn hình)
+    // Tính toán vị trí ngẫu nhiên trong vùng chứa
     const padding = 20;
     const maxX = containerRect.width - btnWidth - padding;
     const maxY = containerRect.height - btnHeight - padding;
-
-    // tạo vị trí ngẫu nhiên
-    const randomX = Math.random() * maxX ;
-    const randomY = Math.random() * maxY ;
-
-    // di chuyển nút đến vị trí ngẫu nhiên
+    // Tạo vị trí ngẫu nhiên cho nút "Không"
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+    // Cập nhật vị trí của nút "Không"
     noBtn.style.left = randomX + 'px';
     noBtn.style.top = randomY + 'px';
+};
+
+// Sự kiện cho hover chuột
+noBtn.onmouseover = moveNoButton;
+
+// Sự kiện cho màn hình cảm ứng
+noBtn.ontouchstart = (e) => {
+    e.preventDefault(); // Ngăn chặn các sự kiện mặc định
+    moveNoButton();
 };
